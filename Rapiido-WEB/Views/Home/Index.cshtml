@@ -1,0 +1,50 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.0.1/jquery.contextMenu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.0.1/jquery.ui.position.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.0.1/jquery.contextMenu.min.css" rel="stylesheet" />
+@*<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>*@
+<link href="/css/select2.min.css" rel="stylesheet" />
+<script src="/js/select2.min.js"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/DashBoard.js?dt=@(DateTime.Now.Ticks)"></script>
+<style>
+    tr.highlighted td {
+        background: #fdfd96;
+    }
+
+    .blink {
+        animation: blinker 1s linear infinite;
+    }
+
+    @@keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .context-menu-item.context-menu-icon-firstOpt {
+        /*background-image: url('../../images/Icons/view.jpg');*/
+        background-image: url("https://cdn4.iconfinder.com/data/icons/6x16-free-application-icons/16/Boss.png");
+        background-repeat: no-repeat;
+        background-position: 4px 4px;
+    }
+</style>
+<div class="mid-container-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Partial("_OnJobDriver")
+            </div>
+            <div class="col-md-6">
+                @Html.Partial("_MAP")
+                @Html.Partial("_DispatchOrder")
+            </div>
+            <div class="col-md-3">
+                @Html.Partial("_AvaliableDriver")
+            </div>
+        </div>
+    </div>
+</div>
+<!--footer start-->
+@Html.Partial("_TodayJobs")
+@Html.Partial("_OrderModal")

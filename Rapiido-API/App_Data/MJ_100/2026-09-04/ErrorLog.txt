@@ -1,0 +1,34 @@
+********** 9/4/2026 8:57:54 PM **********
+Exception Type: System.FormatException
+Exception: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+Source: LogoutWebAppException
+Stack Trace: 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Encrypt_Utils.AesOperation.DecryptString(String key, String cipherText)
+   at DeliverySystemAPI.DAL.Connection.GetDataBaseConnection() in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\DAL\Connection.cs:line 20
+   at DeliverySystemAPI.DAL.D_General.GetConnectionstring(String ClientId) in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\DAL\D_General.cs:line 37
+   at DeliverySystemAPI.DAL.D_WebAppUser.<LogoutWebAppsAsync>d__6.MoveNext() in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\DAL\D_WebAppUser.cs:line 117
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at DeliverySystemAPI.Controllers.HomeController.<LogoutWeb>d__45.MoveNext() in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\Controllers\HomeController.cs:line 1408
+
+********** 9/4/2026 9:01:51 PM **********
+Exception Type: System.FormatException
+Exception: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+Source: SignInWebAppException
+Stack Trace: 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Encrypt_Utils.AesOperation.DecryptString(String key, String cipherText)
+   at DeliverySystemAPI.DAL.Connection.GetDataBaseConnection() in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\DAL\Connection.cs:line 20
+   at DeliverySystemAPI.DAL.D_General.GetConnectionstring(String ClientId) in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\DAL\D_General.cs:line 37
+   at DeliverySystemAPI.DAL.D_WebAppUser.<LoginWebAppsAsync>d__2.MoveNext() in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\DAL\D_WebAppUser.cs:line 43
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at DeliverySystemAPI.Controllers.HomeController.<SignInWebApp>d__44.MoveNext() in D:\Projects\Majestic\Rapiido-API\DeliverySystemAPI\Controllers\HomeController.cs:line 1319
+

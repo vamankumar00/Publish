@@ -1,0 +1,188 @@
+﻿<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Rate Item Information</div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Category Description</label>
+                                        <input type='text' class="form-control" id='OrderDate' />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Short Description</label>
+                                        <input type="text" class="form-control" id="OrderTime" placeholder="Time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Sort Order</label>
+                                        <input type='text' class="form-control" id='OrderDate' />
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                                        <label class="form-check-label" for="invalidCheck2">
+                                            Is Active
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputState">Countryddd</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputState">City</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>*@
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Detail</div>
+                    <div class="panel-body">
+                        <div class="tbl-container tbl-product">
+                            <!-- Table -->
+                            <table class="table" id="product_table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Variation</th>
+                                        <th>Qty</th>
+                                        <th>Rate</th>
+                                        <th>value</th>
+                                        <th class="text-right" scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>mdo</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>fat</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">6</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">7</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>witter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">8</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">9</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">10</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>twitter</td>
+                                        <td class="text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+********** 9/4/2026 8:57:54 PM **********
+Source: LogoutWebRequest Info: {"ResturantId":0,"UserId":22,"DeviceId":null,"DefaultClientId":"MJ_100"}
+********** 9/4/2026 9:01:51 PM **********
+Source: SignInWebAppRequest Info: {"UserName":"adminnazar","UserPassword":"abc@123","DefaultClientId":"MJ_100"}
+********** 9/4/2026 9:04:52 PM **********
+Source: SignInWebAppRequest Info: {"UserName":"adminnazar","UserPassword":"abc@123","DefaultClientId":"MJ_100"}
+********** 9/4/2026 9:04:54 PM **********
+Source: SignInWebAppResponse Info: {"HasError":false,"Message":"Success","exception":null}
+********** 9/4/2026 9:04:56 PM **********
+Source: GetAllDiscounts Info: "MJ_100"
+********** 9/4/2026 9:04:56 PM **********
+Source: GetAllTaxes Info: "MJ_100"
+********** 9/4/2026 9:04:56 PM **********
+Source: GetCategories_Table Info: "MJ_100"
+********** 9/4/2026 9:04:57 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":1}
+********** 9/4/2026 9:05:27 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":1}
+********** 9/4/2026 9:05:30 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":2}
+********** 9/4/2026 9:05:31 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":5}
+********** 9/4/2026 9:05:36 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":3}
+********** 9/4/2026 9:05:39 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":7}
+********** 9/4/2026 9:05:42 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":6}
+********** 9/4/2026 9:05:45 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":3}

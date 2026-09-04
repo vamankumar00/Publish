@@ -1,0 +1,287 @@
+﻿<!-- Brand Logo -->
+<a href="#" class="brand-link">
+    <img src="" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">Backend</span>
+</a>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+            <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+            <a href="#" class="d-block"><span id="spanUserName"></span></a>
+        </div>
+    </div>
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <a href="~/Views/Shared/_driver.cshtml"></a>
+                <button class="btn btn-sidebar">
+                    <i class="fas fa-search fa-fw"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                @*<a href="https://app.rapiidoc.com/Dinein/Dinein" target="_blank" class="nav-link">*@
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Dashboard
+                        <i class="right fas badge-dark"></i>
+                    </p>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                @*<a href="/home/Index" class="nav-link">*@
+                <a href="https://localhost:44374/Dinein/Dinein" target="_blank" class="nav-link">
+                    <i class="nav-icon fas fa-utensils"></i>
+                    <p>
+                        Rapiido
+                        <i class="right fas badge-dark"></i>
+                    </p>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                        Infrastructure
+                        <i class="fas fa-angle-left right"></i>
+                        <span class="badge badge-info right">9</span>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/Home/Vendor" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Vendors</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/RawMaterial" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>RawMaterial</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/Purchases" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Purchases</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/Waiter" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Waiters</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/AssigneTable" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>AssigneTable</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/Bank" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Bank</p>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @*<li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                    Chart of Account
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right">4</span>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+
+                <li class="nav-item">
+                    <a href="/Home/AccountCategory" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Account Category</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Home/AccountSubCategory" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Account SubCategory</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Home/AccountType" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Account Type</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Home/COA" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Chart of Account</p>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Voucher
+                    <i class="fas fa-angle-left right"></i>
+                    <span class="badge badge-info right">2</span>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                    <a href="/Home/Voucher" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Account Voucher</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Home/VoucherList" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Voucher List</p>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>*@
+            @*<li class="nav-item">
+            <a href="/Home/Voucher" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Voucher
+                    <span class="right badge badge-danger">New</span>
+                </p>
+            </a>
+        </li>*@
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-chart-pie"></i>
+                    <p>
+                        User Management
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="/Home/User" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add User</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>User Role</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Reports
+                        <i class="fas fa-angle-left right"></i>
+                        <span class="badge badge-info right">2</span>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+
+                    <li class="nav-item">
+                        <a href="/Home/Voucher" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Account Voucher</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Home/VoucherList" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Voucher List</p>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+</div>
+<!-- /.sidebar -->
+@*-------*@
+@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Driver</h4>
+
+                    </div>
+                <div class="container">
+                    <h2>Driver Tabs</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+
+                        <li><a data-toggle="tab" href="#menu1">Driver 1</a></li>
+
+                        <li><a data-toggle="tab" href="#menu2">Driver 2</a></li>
+
+                        <li><a data-toggle="tab" href="#menu3">Driver 3</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <h3>HOME</h3>
+                            <p>Info About Driver .</p>
+                        </div>
+                        <div id="menu1" class="tab-pane fade">
+                            <h3>Driver 1</h3>
+                            <p>Info About Driver 1.</p>
+                        </div>
+                        <div id="menu2" class="tab-pane fade">
+                            <h3>Driver 2</h3>
+                            <p>Info About Driver 2.</p>
+                        </div>
+                        <div id="menu3" class="tab-pane fade">
+                            <h3>Driver 3</h3>
+                            <p>Info About Driver 3.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+

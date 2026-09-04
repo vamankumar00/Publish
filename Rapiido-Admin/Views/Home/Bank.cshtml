@@ -1,0 +1,38 @@
+
+@{
+    ViewBag.Title = "Bank";
+}
+
+<script src="~/CustomJquery/Bank.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Bank</h1>
+        <div class="card-tools">
+            <span id="bttnAddBank" class="btn btn-success col fileinput-button dz-clickable">
+                <i class="fas fa-plus"></i>
+                <span>Add Bank</span>
+            </span>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table table-sm" id="tblBank">
+            <thead>
+                <tr>
+                    <th>Bank</th>
+                    <th>Amount</th>
+                    <th>Is Bank</th>
+                    <th>Status</th>
+                    <th>CreatedDate</th>
+                    <th>CreatedBy</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_Bank")
+@Html.Partial("_ConfirmationPopup")
+

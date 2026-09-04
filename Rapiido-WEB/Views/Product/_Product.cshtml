@@ -1,0 +1,231 @@
+﻿   <!--start 1 tab-->
+<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row no-pad">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Product Information</div>
+                    <div class="panel-body prd-tbl">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group img-show-btn">
+                                        @*<label>Upload Image</label>*@
+                                        <input type="hidden" id="HFProductItemId" />
+                                        <input type="hidden" id="HFProductItemVeriationId" />
+                                        <input type="hidden" id="HFProductRateId" />
+                                        <input type="hidden" id="HFProductSubCategoryId" />
+                                        <img id='img-upload' />
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-primary btn-file">
+                                                    <i class="fa fa-folder-open-o" aria-hidden="true"></i> <input type="file" id="imgInp">
+                                                </span>
+                                            </span>
+                                            <input type="text" id="txtProductImageinput" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Catagory</label>
+                                                <select name="" id="ddlCategory" class="form-control">
+                                                    <option value=''>Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Sub Catagory</label>
+                                                <select name="" id="ddlSubCategory" class="form-control">
+                                                    <option value=''>Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="fname">Item Desc</label>
+                                                <input type="text" id="txtItemDesc" class="form-control" name="txtItemDesc" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="lname">Short Code</label>
+                                                <input type="text" id="txtProductShortCode" class="form-control" name="txtProductShortCode" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Item Variation</label>
+                                                <select name="" id="ddlItemVariation" class="form-control">
+                                                    <option value=''>Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="lname">Rate</label>
+                                                <input type="number" id="txtRate" class="form-control" name="txtRate" required="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Sort Order</label>
+                                                <input type='text' class="form-control" id='ProductSortOrder' />
+                                                <input class="form-check-input" type="checkbox" checked value="" id="chkIsActiveProduct" required>
+                                                <label class="form-check-label" for="invalidCheck2">
+                                                    Is Active
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" id="AddProduct" class="btn btn-primary">Submit</button>
+                            <button type="button" id="ClearProduct" class="btn btn-primary">Clear</button>
+                            @*<button type="button" title="Delete" class="btn btn-default btn-secondary"><i class="fa fa-window-close"></i> </button>*@
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Detail</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" id="txtProductSearch" class="form-control" placeholder="Search Product">
+                            </div>
+                        </div>
+                        <div class="tbl-container tbl-product">
+                            <!-- Table -->
+                          
+                            <table class="table" id="Product_table" style="width:100%">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Sub-Category</th>
+                                        <th>Item</th>
+                                        <th>Short Desc</th>
+                                        <th>Veriation</th>
+                                        <th>Rate</th>
+                                        <th>Sort Order</th>
+                                        @*<th style="width:20%" scope="col">image</th>*@
+                                        <th style="width:20%" scope="col" class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @*<tr scope="row">
+                    <td>
+                        dsf
+                    </td>
+
+                    <td>
+                    dsf
+                    </td>
+
+                    <td>
+                        df
+                    </td>
+
+                    <td>
+                        <img src="~/images/I-Miss-You-Messages-1.jpg" style="width: 50%;" />
+                    </td>
+
+                    <td>
+                        sdfsdf
+                    </td>
+                </tr>*@
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end 1 tab-->
+<style>
+    .img-show-btn {
+        /*text-align: center;*/
+    }
+
+        .img-show-btn .btn-file {
+            position: relative;
+            overflow: hidden;
+        }
+
+            .img-show-btn .btn-file input[type=file] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                min-width: 100%;
+                min-height: 100%;
+                font-size: 100px;
+                text-align: right;
+                filter: alpha(opacity=0);
+                opacity: 0;
+                outline: none;
+                background: white;
+                cursor: inherit;
+                display: block;
+            }
+
+        .img-show-btn #img-upload {
+            width: 100%;
+            max-width: 181px;
+            max-height: 165px;
+            /*min-height: 165px;*/
+        }
+
+        .img-show-btn .input-group .form-control {
+            width: 78%;
+        }
+</style>
+<script>
+    $(document).ready(function () {
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function (event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+    });
+</script>

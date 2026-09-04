@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "_BankDetails";
+}
+
+
+<input type="hidden" id="hfBankDetailsId" />
+<div class="modal fade" id="addBankDetailspopup" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <form id="bankDetailsForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="txtBankBin">Bank Bin</label>
+                            <input type="text" class="form-control" id="txtBankBin" placeholder="Enter Bank Bin">
+                        </div>
+                       
+                        <div class="col-md-6 mb-3">
+                            <label for="txtPersonCount">Person Count</label>
+                            <input type="number" class="form-control" id="txtPersonCount" placeholder="Enter Person Count">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="ddlCardType">Card Type</label>
+                            <select class="form-control" id="ddlCardType">
+                                <option value="">Select Card Type</option>
+                                <option>Credit Card</option>
+                                <option>Debit Card</option>
+                                <option>Islamic Debit Card</option>
+                                <option>Islamic Noor Card</option>
+                                <option>Saffron Card</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="txtCardProduct">Card Product</label>
+                            <input type="text" class="form-control" id="txtCardProduct" placeholder="Enter Card Product">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="ddlVisit">Visit</label>
+                            <select class="form-control" id="ddlVisit">
+                                <option value="">Select Visit Option</option>
+                                <option>Card Holder</option>
+                                <option>Card Holder + Guest</option>
+                                <option>Card Holder + 2 Guest</option>
+                            </select>
+                        </div>                      
+                    </div>
+
+                    
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="ChkIsBankActive" checked>
+                        <label class="form-check-label" for="ChkIsBankActive">Active</label>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="card-footer">
+                <div class="text-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveBankDetails" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,92 @@
+﻿   <!--start 1 tab-->
+<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row no-pad">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Filter</div>
+                    <div class="panel-body prd-tbl">
+                        <form>
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Product</label>
+                                        <select name="" id="ddlDealSetProduct" class="form-control">
+                                            <option value=''>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                               
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="" class="d-block pull-right"></label>
+                                        <br />
+                                        <button type="button" id="AddDealProduct" class="btn btn-primary m-l-r">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Catagory</label>
+                                        <select name="" id="ddlDealCategory" class="form-control">
+                                            <option value=''>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Product</label>
+                                        <select name="" id="ddlDealProduct" class="form-control">
+                                            <option value=''>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Variant </label>
+                                        <select name="" id="ddlDealVarient" class="form-control">
+                                            <option value=''>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Qty</label>
+                                        <input type="number" id="txtDealItemQty" class="form-control" autocomplete="off" name="txtItemDesc" required="" placeholder="QTY">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--table start-->
+                            <div class="tbl-container tbl-filter">
+                                <!-- Table -->
+                                <table class="table" id="addDealDetailTable">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Product</th>
+                                            <th>Variant</th>
+                                            <th>Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--table end-->
+
+                            <div class="row">
+                              
+                                <div class="col-sm-4"><button type="button" id="SubmitDeal" class="btn btn-primary m-l-r">Submit</button></div>
+                            </div>
+                            @*<button type="button" title="Delete" class="btn btn-default btn-secondary"><i class="fa fa-window-close"></i> </button>*@
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end 1 tab-->

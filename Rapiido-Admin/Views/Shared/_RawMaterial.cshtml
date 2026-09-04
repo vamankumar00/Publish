@@ -1,0 +1,43 @@
+﻿
+
+<input type="hidden" id="hfRawMaterialId" />
+<div class="modal fade" id="addRawMaterialpopup" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Raw Material</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+
+                <div class="row">
+                    <div class="col-12">
+                        <label for="exampleInputEmail1">Raw Material</label>
+                        <input type="email" class="form-control" id="txtRawMaterial" placeholder="Raw Material" maxlength="100">
+                    </div>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="checked" id="ChkIsRawMaterialActive">
+                    <label class="form-check-label" for="exampleCheck1">Active</label>
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+                <div class="text-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveRawMaterial" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+

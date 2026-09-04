@@ -1,0 +1,255 @@
+
+@{
+    ViewBag.Title = "OrderList";
+}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/OrderList.js?dt=@(DateTime.Now.Ticks)"></script>
+
+@*<script src="~/CustomJquery/DefaultClientId.min.js"></script>
+    <script src="~/CustomJquery/GenericAjax.min.js"></script>
+    <script src="~/CustomJquery/OrderList.min.js"></script>*@
+<style>
+    tr.highlighted td {
+        background: #fdfd96;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .blink {
+        animation: blinker 2s linear infinite;
+    }
+
+    @@keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row no-pad">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Detail
+                        <span class="TotalNetAmount pull-right"></span><label class="pull-right" for="TotalNetAmount">Total Net Amount:</label>
+                    </div>
+                    <div class="panel-body dt-height">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">From Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="OrderDetailfromDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">To Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="OrderDetailtoDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order Status</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2">
+                                                    </i>
+                                                </div>
+                                                <select name="" id="ddlOrderStatus" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Cleared">Cleared</option>
+                                                    <option value="Cancelled">Cancelled</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order From</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop">
+                                                    </i>
+                                                </div>
+                                                <select name="" id="ddlOrderFrom" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="CustomerApp">CustomerApp</option>
+                                                    <option value="WaiterApp">WaiterApp</option>
+                                                    <option value="WebApp">WebApp</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order Type</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop">
+                                                    </i>
+                                                </div>
+                                                <select name="" id="ddlOrderType" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="5">DineIn (Room/Table)</option>
+                                                    <option value="6">Takeaway</option>
+                                                    <option value="8">Entertainment</option>
+                                                    <option value="9">Staff</option>
+                                                    <option value="10">Party</option>
+                                                    <option value="11">FOC</option>
+                                                    <option value="12">Delivery</option>
+                                                    <option value="13">FoodPanda</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Payment Status</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop">
+                                                    </i>
+                                                </div>
+                                                <select name="" id="ddlPaymentStatus" class="form-control">
+                                                    <option value="">All</option>
+                                                    <option value="1">Paid</option>
+                                                    <option selected value="0">Unpaid</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order No:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="OrderDetailorderNo" name="OrderDetailorderNo" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Customer Name:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="OrderDetailcustomerName" name="OrderDetailcustomerName" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for=""></label>
+                                        <div class="input-group">
+                                            <button type="button" id="GenerateOrderReport" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tbl-container tbl-product">
+                            <!-- Table -->
+                            <input type="hidden" id="HFOrderMasterId" />
+                            <table class="table table-bordered" id="OrderMaster_table" style="width:100%">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Order #</th>
+                                        <th>Table No</th>
+                                        <th>Status</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                        <th>Tax%</th>
+                                        <th>Tax Amount</th>
+                                        <th>Discount%</th>
+                                        <th>Discount Amount</th>
+                                        <th>Net Amount</th>
+                                        <th>Avg Rating</th>
+                                        <th>Feedback</th>
+                                        <th>Payment Type</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="paginationButtons" class="text-center mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_OrderModal")
+@Html.Partial("_SavePopup")
+@Html.Partial("_RatingModal")
+@Html.Partial("_PaymentReceive")
+@Html.Partial("_AssignWaiter")
+
+<script>
+    //let userIsViewingPage = true;
+    //setInterval(focusChecker, 500);
+    //function focusChecker() {
+    //    if (document.hasFocus()) {
+    //        if (!userIsViewingPage) {
+    //            GetOrderListReport();
+    //            //location.reload();
+    //            userIsViewingPage = true;
+    //        }
+    //    }
+    //    else {
+    //        userIsViewingPage = false;
+    //    }
+    //}
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+    $(document).ready(function () {
+        GetOrderListReport();
+    })
+</script>
+

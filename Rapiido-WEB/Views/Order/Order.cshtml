@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/Order.js?dt=@(DateTime.Now.Ticks)"></script>
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<div class="mid-container-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Pickup & Delivery Information</div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Date</label>
+                                        <input type='text' class="form-control" id='OrderDate' />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Time</label>
+                                        <input type="text" class="form-control" id="OrderTime" placeholder="Time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Pickup Location</label>
+                                <input type="text" class="form-control" id="PickupLoacation" placeholder="Pickup Location">
+                                <input type="hidden" id="HFRestaurantLat" />
+                                <input type="hidden" id="HFRestaurantLan" />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Telphone No.</label>
+                                        <input type="text" class="form-control numeric" id="TelephoneNo" placeholder="Phone No">
+                                        <input type="hidden" id="CustomerId" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Name</label>
+                                        <input type="text" class="form-control alpha" id="FName" placeholder="First Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Door No.</label>
+                                        <input type="text" class="form-control" id="DoorNo" aria-describedby="emailHelp" placeholder="Door No">
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputState">Countryddd</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputState">City</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        @*<label for="exampleInputEmail1">Delivery Location</label>*@
+                                        <input type="text" class="form-control" id="CustomerAddress" aria-describedby="emailHelp" placeholder="Customer Address">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" id="viewMap" onclick="GetRoute()" type="button">Go!</button>
+                                        </span>
+                                        <input type="hidden" id="HFCustomerLat" />
+                                        <input type="hidden" id="HFCustomerLan" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Locations</label>
+                                        <select id="CustomerMultiLocations" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Goods Information</div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Catagory</label>
+                                        <select name="" id="ddlCategory" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Sub Catagory</label>
+                                        <select name="" id="ddlSubCategory" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Item</label>
+                                        <select name="" id="ddlItem" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Variation</label>
+                                        <select name="" id="ddlItemVariation" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Rate</label>
+                                        <input type="number" min="1" class="form-control" id="ProductRate" placeholder="Rate">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Qty</label>
+                                        <input type="number" min="1" class="form-control numeric" id="ProductQty" placeholder="Qty">
+                                        <input type="hidden" id="ProductRate" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-primary" id="AddProduct">Add Product</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tbl-container tbl-product">
+                        <!-- Table -->
+                        <table class="table" id="product_table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Variation</th>
+                                    <th>Qty</th>
+                                    <th>Rate</th>
+                                    <th>value</th>
+                                    <th class="text-right" scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Total</td>
+                                    <td>Total:</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Payment & Charges Detail</div>
+                    <div class="panel-body">
+                        <form>
+                            @*<div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="inputState">Payment Mode</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Price</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Distance</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Service</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Parking</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Extra</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Total</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="exampleInputEmail1">Discount</label>
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Discount</option>
+                                        <option value="5">5%</option>
+                                        <option value="10">10%</option>
+                                        <option value="15">15%</option>
+                                        <option value="20">20%</option>
+                                        <option value="25">25%</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="exampleInputEmail1">Total</label>
+                                    <input type="number" class="form-control" id="txtNetAmountAfterDiscount" aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @*<div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search for...">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">Go!</button>
+                                            </span>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        </div>*@
+                                    <button type="button" id="SubmitOrder" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_MapDirection")
+@Html.Partial("_SavePopup")

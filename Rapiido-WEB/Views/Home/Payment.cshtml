@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "Payment";
+}
+<style>
+    .hideRow {
+        display: none
+    }
+</style>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/Payment.js?dt=@(DateTime.Now.Ticks)"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Customer Information
+
+                    </div>
+                    <div class="panel-body prd-tbl">
+                        <form>
+                            <input type="hidden" id="Customer_Info" />
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" id="hfmeals">
+                                        <input type="hidden" class="form-control" id="hfmaxmeals">
+                                        <label for="ddlFTPayment">Fast Track Payment</label>
+                                        <select name="ddlFTPayment" id="ddlFTPayment" class="form-control">
+                                            <option value='1'>Yes</option>
+                                            <option selected value='0'>No</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="ddlPaymentType">Payment Type</label>
+                                        <select name="ddlPaymentType" id="ddlPaymentType" class="form-control">
+                                            <option value=''>Select</option>
+                                            <option value='CARD'>CARD</option>
+                                            <option value='WALKIN'>WALK-IN</option>
+                                            <option value='AIRLINE'>AIRLINE</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 dvPaymentBy" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="ddlPaymentBy">Payment By</label>
+                                        <select name="ddlPaymentBy" id="ddlPaymentBy" class="form-control">
+                                            <option value=''>Select</option>
+                                            <option value='CARD'>CARD</option>
+                                            <option value='CASH'>CASH</option>
+                                            <option value='CARD/CASH'>CARD + CASH</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 dvAirline" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="ddlAirline">Airline</label>
+                                        <select name="ddlAirline" id="ddlAirline" class="form-control">
+                                            <option value=''>Select</option>
+                                            <option value='THAI AIRLINE'>THAI AIRLINE</option>
+                                            <option value='GULF AIRLINE'>GULF AIRLINE</option>
+                                            <option value='SAUDI AIRLINE'>SAUDI AIRLINE</option>
+                                            <option value='QATAR AIRLINE'>QATAR AIRLINE</option>
+                                            <option value='BATIK AIRLINE'>BATIK AIRLINE</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 dvBin" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="ddlBank_Card">Bank Card</label>
+                                        <select name="ddlBank_Card" id="ddlBank_Card" class="form-control">
+                                            <option value=''>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 dvBin" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="Bin_No">BIN No.</label>
+                                        <input type="text" class="form-control" id="Bin_No" maxlength="11" placeholder="123456-3456">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 dvBin" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="ddlCardType">Card Type</label>
+                                        <select name="ddlCardType" id="ddlCardType" class="form-control">
+                                            <option value=''>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 dvBin" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="ddlCardProduct">Card Product</label>
+                                        <select name="ddlCardProduct" id="ddlCardProduct" class="form-control">
+                                            <option value=''>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="ReceiptNo">POS/Auth/Receipt No</label>
+                                        <input type="text" class="form-control" id="ReceiptNo" placeholder="Enter Receipt No">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Flight No.</label>
+                                        <input type="text" class="form-control" id="Flight_No" placeholder="Enter Flight No.">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">No of Passengers</label>
+                                        <input type="text" class="form-control" id="ddlMeals" placeholder="Enter No. of Meals" required>
+                                        @*<select name="" id="ddlMeals" class="form-control">
+                                                <option value='1'>1</option>
+                                                <option value='2'>2</option>
+                                            </select>*@
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Children Meals</label>
+                                        <input type="text" class="form-control" id="Children" placeholder="Enter No. of Infants">
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tables</label>
+                                        <select name="" id="ddlTables" class="form-control">
+                                            <option value=''>Select</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2" style="display:none;">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Assign Waiter</label>
+                                        <select name="" id="ddlWaiter" class="form-control">
+                                            <option value=''>Select</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <!-- Other Bank Cards Table -->
+                                <table id="tbl_BankCards" class="table" style="width:100%; display:none">
+                                    <thead>
+                                        <tr>
+                                            <th>Passenger Name</th>
+                                            <th style="display:none">Bank Card Id</th>
+                                            <th>Bank Card</th>
+                                            <th>Card Type</th>
+                                            <th>Card Product</th>
+                                            <th>BIN No</th>
+                                            <th>Meals</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableBody"></tbody>
+                                    <tfoot>
+                                        <!-- The total row will be added here -->
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div id="customerFields">
+                                    <!-- Customer name and contact fields will be added dynamically here -->
+                                </div>
+                            </div>
+                            <button type="button" id="Add_BankCards" class="btn btn-info">Add More Cards</button>
+                            <button type="button" id="Submit_CustomerInfo" class="btn btn-primary">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_AddBankCards")

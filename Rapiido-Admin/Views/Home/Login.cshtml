@@ -1,0 +1,77 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login-Backend</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css" />
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css" />
+    <script src="~/Assets/alertifyjs/alertify.js"></script>
+    <script src="~/Assets/alertifyjs/alertify.min.js"></script>
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <link href="~/Assets/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+    <script src="~/CustomJQuery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+    <script src="~/CustomJQuery/Common.js?dt=@(DateTime.Now.Ticks)"></script>
+    <script src="~/CustomJQuery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+    <script src="~/CustomJQuery/Login.js?dt=@(DateTime.Now.Ticks)"></script>
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+       
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" autocomplete="off" placeholder="Restaurant Id" id="defaultclientid">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" value="devadmin" placeholder="username" id="username">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" id="password" value="123123" placeholder="Password">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="chkremember">
+                            <label for="remember">
+                                Remember Me
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-4">
+                        <button type="button" id="bttnLogin" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script src="../plugins/jquery/jquery.min.js"></script>
+   
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+   
+    <script src="../dist/js/adminlte.min.js"></script>
+</body>
+</html>

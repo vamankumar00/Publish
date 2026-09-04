@@ -1,0 +1,520 @@
+@{
+    ViewBag.Title = "Reports";
+}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/Reports.js"></script>
+<style>
+    tr.highlighted td {
+        background: #fdfd96;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .blink {
+        animation: blinker 2s linear infinite;
+    }
+
+    #reportTableHeader th {
+        position: sticky;
+        top: 0; /* Sticks the header to the top */
+        z-index: 2; /* Ensure the header stays above the table content */
+        background-color: #343a40; /* Dark background to match your header */
+        color: white;
+    }
+
+    @@keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+
+
+    .TotalEntries {
+        font-weight: bold;
+        margin-right: 10px;
+        margin-left: 5px;
+    }
+
+    .total-row {
+        font-weight: bold;
+        background-color: #f5f5f5; /* Light gray background for the total row */
+        border: solid thin black;
+    }
+
+    .rating-stars {
+        font-size: 18px;
+        color: gold;
+    }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        max-height: 90vh;
+        overflow-y: auto;
+        width: 80vw; /* Increase width to 80% of viewport */
+        max-width: 1000px; /* Optional max width */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+        .modal-content button {
+            margin-top: 20px;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .modal-content button:hover {
+                background: #0056b3;
+            }
+
+    .feedback-preview {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+        .feedback-preview:hover {
+            text-decoration: underline;
+            color: darkblue;
+        }
+
+    .modal-content table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-top: 15px;
+    }
+
+    .modal-content th, .modal-content td {
+        border: 1px solid #dee2e6;
+        padding: 10px 12px;
+        text-align: left;
+    }
+
+    .modal-content thead {
+        background-color: #f8f9fa;
+        color: #343a40;
+        font-weight: bold;
+    }
+
+    .modal-content tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .modal-content tr:hover {
+        background-color: #e9ecef;
+    }
+
+    #pagination button {
+        margin: 0 3px;
+        padding: 6px 12px;
+        border: 1px solid #007bff;
+        background-color: white;
+        color: #007bff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        #pagination button:disabled {
+            background-color: #007bff;
+            color: white;
+            cursor: default;
+        }
+
+    #DownloadPdfBtn:hover {
+        background-color: #a00a33;
+        color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    }
+
+    #DownloadExcelBtn {
+        background-color: #1D6F42;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 14px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    #DownloadExcelBtn:hover {
+        background-color: #155233;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transform: scale(1.05);
+    }
+</style>
+<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row no-pad">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        REPORT -  <span id="selectedReportName"></span>
+                        @*<span class="TotalNetAmount pull-right"></span><label class="pull-right" for="TotalNetAmount">Total Net Amount:</label>*@
+                        <span class="TotalEntries pull-right"></span><label class="pull-right" for="TotalEntries">Total Entries:</label>
+                    </div>
+
+
+                    <div class="panel-body dt-height">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Date Type</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2"></i>
+                                                </div>
+
+                                                <select name="" id="dateType" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="OrderDate">OrderDate</option>
+                                                    <option value="ShiftDate">ShiftDate</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- Form Filters -->
+                                    <div class="col-sm-2">
+                                        <form method="post">
+                                            <label for="">From Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input class="form-control" id="fromDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form method="post">
+                                            <label for="">To Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input class="form-control" id="toDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2" style="display:none">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order Status</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2"></i>
+                                                </div>
+                                                <select name="" id="OrderStatus" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Cleared">Cleared</option>
+                                                    <option value="Cancelled">Cancelled</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order From</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop"></i>
+                                                </div>
+                                                <select name="" id="OrderFrom" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="CustomerApp">CustomerApp</option>
+                                                    <option value="WaiterApp">WaiterApp</option>
+                                                    <option value="WebApp">WebApp</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order Type</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop"></i>
+                                                </div>
+                                                <select name="" id="OrderType" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="5">DineIn</option>
+                                                    <option value="6">Takeaway</option>
+                                                    <option value="8">Entertainment</option>
+                                                    <option value="9">Staff</option>
+                                                    <option value="10">Party</option>
+                                                    <option value="11">FOC</option>
+                                                    <option value="12">Delivery</option>
+                                                    <option value="13">From Foodpanda</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2" style="display:none">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Shift</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop"></i>
+                                                </div>
+                                                <select name="" id="shift" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="shiftA">Shift A</option>
+                                                    <option value="shiftB">Shift B</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Payment Status</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop"></i>
+                                                </div>
+                                                <select name="" id="PaymentStatus" class="form-control">
+                                                    <option selected value="">Select</option>
+                                                    <option value="1">Paid</option>
+                                                    <option value="0">Unpaid</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Order No:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2"></i>
+                                                </div>
+                                                <input class="form-control" id="orderNo" name="OrderDetailorderNo" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Customer Name:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2"></i>
+                                                </div>
+                                                <input class="form-control" id="customerName" name="OrderDetailcustomerName" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form method="post">
+                                            <label for="searchTerm">Search Term:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-search"></i>
+                                                </div>
+                                                <input class="form-control" id="searchTerm" name="searchTerm" type="text" placeholder="Search..." />
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <form method="post">
+                                            <label for="">Report Name:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop"></i>
+                                                </div>
+                                                <select name="reportName" id="reportName" class="form-control">
+                                                    <option selected value="" disabled>Please Select</option>
+                                                    @*<option value="OrderDetails">Order Details</option>*@
+                                                    @*<option value="PartyLedger">Party Ledger</option>*@
+                                                    @*<option value="ShiftLedger">Shift Ledger</option>*@
+                                                    @*<option value="FinancialSummmary">Financial Summmary</option>*@
+                                                    @*<option value="PettyCash">Petty Cash</option>*@
+                                                    @*<option value="DepartmentSummary">Department Summary</option>*@
+                                                    @*<option value="DiscountReport">Discount Report</option>*@
+                                                    @*<option value="RiderSummary">Rider Summary</option>*@
+                                                    @*<option value="RiderDetails">Rider Orders</option>*@
+                                                    @*<option value="DailySalesReport">Daily Sales</option>*@
+                                                    <option value="ItemReport">Item Sales Report</option>
+                                                    <option value="CategoryReport">Category Report </option>
+                                                    <option value="CustomerFeedBack">Customer FeedBack </option>
+                                                    <option value="WaiterReport">Waiter Order </option>
+                                                    <option value="WaiterOrdersReport">Waiter's Summary </option>
+                                                    <option value="SellingItemsByDay">Day-Wise Report </option>
+                                                    @*<option value="DeliveryReport">Delivery Report </option>*@
+                                                    @*<option value="MonthlyReport">Payable Report</option>*@
+                                                    <option value="OrderSummeryReport">Order Summery Report</option>
+                                                    <option value="FOCOrdersReport">FOC Orders Report</option>
+                                                    <option value="FOCFinancialReport">FOC Financial Report</option>
+                                                    <option value="BankWiseReport">Bank Wise Report</option>
+                                                        </select>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-sm-2" id="departmentContainer">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Department</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-building"></i>
+                                                </div>
+                                                <select name="" id="Department" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="1">ASF</option>
+                                                    <option value="2">ANF</option>
+                                                    <option value="3">DFO</option>
+                                                    <option value="4">CUSTOM</option>
+                                                    <option value="5">HEALTH</option>
+                                                    <option value="6">ISI</option>
+                                                    <option value="7">IB</option>
+                                                    <option value="8">COMMERCIAL</option>
+                                                    <option value="9">DTM</option>
+                                                    <option value="10">TM</option>
+                                                    <option value="11">CSO</option>
+                                                    <option value="12">FIA</option>
+                                                    <option value="13">NKC</option>
+                                                    <option value="14">Civil</option>
+                                                    <option value="15">Customer</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <label for=""></label>
+                                        <div class="input-group">
+                                            <button type="button" id="GenerateOrderReport" class="btn btn-primary">Submit</button>
+
+                                        </div>
+
+                                    </div>
+                                    @*<div class="col-sm-2">
+            <label for=""></label>
+            <div class="input-group">
+                <button type="button" id="DownloadPdfBtn" class="btn btn-primary" click disabled>Download PDF </button>
+            </div>
+
+        </div>*@
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tbl-container tbl-product">
+                            <div class="row" style="margin: 15px 0; padding: 0 20px;">
+
+
+
+                                <div class="col-sm-6 text-left">
+                                    <div>
+
+
+                                        <div id="pageSizeContainer" style="display: none; margin-top: 8px;">
+                                            <label for="pageSizeSelect" style="margin-bottom: 0; width: 120px;">Rows per page:</label>
+                                            <select id="pageSizeSelect" class="form-control" style="width: 65px; display: inline-block;">
+                                                <option value="10" selected>10</option>
+                                                <option value="20">20</option>
+                                                <option value="50">50</option>
+                                                <option value="-1">All</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                	<div class="col-sm-6 text-right">
+                                        <button type="button" id="DownloadExcelBtn" class="btn" style="display: none; margin-right: 10px;">
+                                            <i class="fa fa-file-excel-o"></i> Download Excel
+                                        </button>
+                                        <button type="button" id="DownloadPdfBtn" class="btn btn-primary" style="display: none;margin-right:50px;">
+                                            Download Report
+                                        </button>
+                                    </div>
+
+                            </div>
+
+
+                            <input type="hidden" id="HFOrderMasterId" />
+                            <div class="table-wrapper" style="overflow: auto; width: 100%;">
+                                <table class="table" id="OrderMaster_table" style="width: 100%; min-width: max-content; white-space: nowrap;">
+                                    <thead class="thead-dark" id="reportTableHeader">
+                                        <!-- Headers -->
+                                    </thead>
+                                    <tbody id="reportTableBody">
+                                        <!-- Data -->
+                                    </tbody>
+                                    <tfoot id="reportTableFooter">
+                                        <!-- Totals -->
+
+                                    </tfoot>
+                                </table>
+
+                            </div>
+
+                        </div>
+                        <div id="pagination" style="display: inline-block; margin-top:30px;margin-right: 10px;margin-left:40%;text-align:center;"></div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="feedbackModal" class="modal-overlay">
+    <div class="modal-content">
+        <p id="fullFeedbackText"></p>
+        <button onclick="closeFeedbackPopup()">Close</button>
+    </div>
+</div>
+@Html.Partial("_OrderModal")
+@Html.Partial("_SavePopup")
+@Html.Partial("_RatingModal")
+@Html.Partial("_PaymentReceive")
+@Html.Partial("_AssignWaiter")

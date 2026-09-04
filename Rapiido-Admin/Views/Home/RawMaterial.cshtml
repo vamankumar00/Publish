@@ -1,0 +1,36 @@
+
+@{
+    ViewBag.Title = "RawMaterial";
+}
+<script src="~/CustomJQuery/RawMaterial.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Raw Material</h1>
+        <div class="card-tools">
+            <span id="bttnAddMaterial" class="btn btn-success col fileinput-button dz-clickable">
+                <i class="fas fa-plus"></i>
+                <span>Add Material</span>
+            </span>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+
+        <table class="table table-sm" id="tblRawMaterial">
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Status</th>
+                    <th>CreatedDate</th>
+                    <th>CreatedBy</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_RawMaterial")
+@Html.Partial("_ConfirmationPopup")
+

@@ -1,0 +1,39 @@
+
+@{
+    ViewBag.Title = "Purchases";
+}
+
+
+<script src="~/CustomJQuery/Purchases.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Raw Material</h1>
+        <div class="card-tools">
+            <span id="bttnPurchases" class="btn btn-success col fileinput-button dz-clickable">
+                <i class="fas fa-plus"></i>
+                <span>Add Invoice</span>
+            </span>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+
+        <table class="table table-sm" id="tblInvoiceListMaster">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Supplier</th>
+                    <th>InvoiceNumber</th>
+                    <th>PaymentType</th>
+                    <th>Date</th>
+                    <th>CreatedBy</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_Purchases")
+@Html.Partial("_ConfirmationPopup")

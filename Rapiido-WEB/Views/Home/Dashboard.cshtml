@@ -1,0 +1,291 @@
+@* Dashboard: Operational Intelligence Portal *@
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+    :root {
+        --dash-primary: #5e72e4;
+        --dash-success: #2dce89;
+        --dash-info: #11cdef;
+        --dash-warning: #fb6340;
+        --dash-danger: #f5365c;
+        --dash-bg: #f8f9fe;
+        --dash-card-bg: #ffffff;
+    }
+
+    body { 
+        font-family: 'Outfit', sans-serif !important; 
+        background-color: var(--dash-bg) !important;
+        color: #32325d;
+    }
+
+    header { display: none !important; }
+
+    .dashboard-wrapper {
+        padding: 2rem;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+
+    /* Header Styling */
+    .dash-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+    }
+
+    .dash-title-group h1 {
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        color: #32325d;
+        margin-bottom: 0.25rem;
+        text-transform: uppercase;
+    }
+
+    .dash-title-group p {
+        color: #8898aa;
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .kpi-card {
+        background: var(--dash-card-bg);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease;
+    }
+
+    .kpi-card:hover { transform: translateY(-5px); }
+
+    .kpi-card .kpi-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #8898aa;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .kpi-card .kpi-value {
+        font-size: 1.75rem;
+        font-weight: 800;
+        display: block;
+    }
+
+    .kpi-icon-box {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+
+    .bg-primary-grad { background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%); }
+    .bg-success-grad { background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%); }
+    .bg-info-grad { background: linear-gradient(87deg, #11cdef 0, #1171ef 100%); }
+    .bg-warning-grad { background: linear-gradient(87deg, #fb6340 0, #fbb140 100%); }
+
+    /* Chart Containers */
+    .dash-card {
+        background: var(--dash-card-bg);
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
+        margin-bottom: 2rem;
+    }
+
+    .dash-card .card-header {
+        background: transparent;
+        padding: 1.5rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .dash-card .card-header h5 {
+        margin: 0;
+        font-weight: 700;
+        color: #32325d;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+
+    .dash-card .card-body { padding: 1.5rem; }
+
+    /* Filter Buttons */
+    .filter-group .btn {
+        background: white;
+        color: var(--dash-primary);
+        font-weight: 700;
+        border: 1px solid #e9ecef;
+        padding: 0.5rem 1.25rem;
+        transition: all 0.2s ease;
+    }
+
+    .filter-group .btn.active {
+        background: var(--dash-primary);
+        color: white;
+        border-color: var(--dash-primary);
+    }
+
+    /* Loading Overlay */
+    body.loading::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.7);
+        z-index: 9999;
+        cursor: wait;
+    }
+
+    .trend-indicator { font-weight: 700; font-size: 0.85rem; margin-top: 0.5rem; display: block; }
+</style>
+
+<div class="dashboard-wrapper">
+    <!-- Header -->
+    <div class="dash-header">
+        <div class="dash-title-group">
+            <h1 id="restaurantName">MAJESTIC</h1>
+            <!-- <p id="dashboardSubtitle">Operational Intelligence Pulse</p> -->
+        </div>
+        <div class="filter-group shadow-sm btn-group" id="dateFilterGroup">
+            <button type="button" class="btn active" data-range="today">TODAY</button>
+            <button type="button" class="btn" data-range="week">WEEK</button>
+            <button type="button" class="btn" data-range="month">MONTH</button>
+            <button type="button" class="btn" data-range="year">YEAR</button>
+        </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <span class="kpi-label">Revenue (Net)</span>
+            <span class="kpi-value" id="totalRevenue">0.00</span>
+            <div class="kpi-icon-box bg-primary-grad"><i class="fas fa-coins"></i></div>
+            <div id="revenueTrend" class="trend-indicator text-muted">--</div>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Sales Orders</span>
+            <span class="kpi-value" id="totalOrders">0</span>
+            <div class="kpi-icon-box bg-success-grad"><i class="fas fa-shopping-bag"></i></div>
+            <div id="ordersTrend" class="trend-indicator text-muted">--</div>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Avg Order Value</span>
+            <span class="kpi-value" id="avgOrderValue">0.00</span>
+            <div class="kpi-icon-box bg-info-grad"><i class="fas fa-chart-bar"></i></div>
+            <div id="aovTrend" class="trend-indicator text-muted">--</div>
+        </div>
+        <div class="kpi-card">
+            <span class="kpi-label">Voided Loss</span>
+            <span class="kpi-value" id="cancellationLoss">0.00</span>
+            <div class="kpi-icon-box bg-warning-grad"><i class="fas fa-ban"></i></div>
+            <div id="totalCancelledCount" class="trend-indicator text-danger font-weight-bold">0 VOIDED</div>
+        </div>
+    </div>
+
+    <!-- Main Charts -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card dash-card">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-line mr-2 text-primary"></i> Revenue Performance Flow</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="salesTrendChart" height="280"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card dash-card">
+                <div class="card-header"><h5><i class="fas fa-university mr-2 text-success"></i> Top Bank Usage (Top 5)</h5></div>
+                <div class="card-body"><canvas id="paymentMethodChart" height="250"></canvas></div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card dash-card">
+                <div class="card-header"><h5><i class="fas fa-credit-card mr-2 text-warning"></i> Card Type Usage</h5></div>
+                <div class="card-body"><canvas id="cardTypeChart" height="250"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- <div class="col-xl-4 col-lg-5 col-md-12 mb-4">
+            <div class="card dash-card h-100">
+                <div class="card-header"><h5><i class="fas fa-chair mr-2 text-info"></i> Table Census</h5></div>
+                <div class="card-body text-center d-flex flex-column align-items-center justify-content-center p-4">
+                    <div class="row w-100 mt-4">
+                        <div style="width: 100%; max-width: 200px;">
+                            <canvas id="occupancyChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="row w-100 mt-4">
+                        <div class="col-6 border-right">
+                            <h3 class="font-weight-bold mb-0 text-primary" id="occupiedTables">0</h3>
+                            <small class="text-muted font-weight-bold">OCCUPIED</small>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="font-weight-bold mb-0 text-success" id="vacantTables">0</h3>
+                            <small class="text-muted font-weight-bold">VACANT</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="col-xl-8 col-lg-7 col-md-12 mb-4"> -->
+        <div class="col-lg-12">
+            <div class="card dash-card h-100">
+                <div class="card-header"><h5><i class="far fa-clock mr-2 text-primary"></i> Peak Load Pattern</h5></div>
+                <div class="card-body"><canvas id="hourlyTrendChart" height="250"></canvas></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-6">
+            <div class="card dash-card">
+                <div class="card-header"><h5><i class="fas fa-bolt mr-2 text-warning"></i> Velocity Products</h5></div>
+                <div class="card-body"><canvas id="productChart" height="300"></canvas></div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card dash-card">
+                <div class="card-header"><h5><i class="fas fa-user-tie mr-2 text-primary"></i> Team Performance</h5></div>
+                <div class="card-body"><canvas id="staffChart" height="300"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Logic Injection *@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="~/js/moment.min.js"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/DashBoard.js?dt=@(DateTime.Now.Ticks)"></script>

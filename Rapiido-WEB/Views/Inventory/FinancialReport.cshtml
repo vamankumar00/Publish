@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "FinancialReport";
+}
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/FinancialReport.js?dt=@(DateTime.Now.Ticks)"></script>
+
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<h2 class="text-center">Financial Report</h2>
+
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label for="">Shift Date :</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar">
+                    </i>
+                </div>
+                <input class="form-control" id="ShiftDateFR" name="date" placeholder="YYYY-MM-DD" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label>Select Shift</label>
+            <div class="input-group">
+                <select name="ddlShiftFR" id="ddlShiftFR" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <br />
+            <button type="button" id="btnSearchFR" class="btn btn-primary m-l-r">Search</button>
+
+        </div>
+    </div>
+</div>
+
+
+<table>
+    <tr>
+        <td>Counter:</td>
+        <td class="counter"></td>
+    </tr>
+    <tr>
+        <td>Shift#:</td>
+        <td class="shift"></td>
+    </tr>
+    <tr>
+        <td>Gross Amount:</td>
+        <td class="gross_amount"></td>
+    </tr>
+    <tr>
+        <td>ENT:</td>
+        <td class="ent"></td>
+    </tr>
+    <tr>
+        <td>Tax:</td>
+        <td class="tax"></td>
+    </tr>
+    <tr>
+        <td>Discount:</td>
+        <td class="discount"></td>
+    </tr>
+    <tr>
+        <td>S. Charges:</td>
+        <td class="s_charges"></td>
+    </tr>
+    <tr>
+        <td>E. Charges:</td>
+        <td class="e_charges"></td>
+    </tr>
+    <tr>
+        <td>Sale Return:</td>
+        <td class="sale_return"></td>
+    </tr>
+    <tr>
+        <td>Net Sale:</td>
+        <td class="net_sale"></td>
+    </tr>
+    <tr>
+        <td>Credit:</td>
+        <td class="credit"></td>
+    </tr>
+    <tr>
+        <td>Cash:</td>
+        <td class="cash"></td>
+    </tr>
+    <tr>
+        <td>Voucher:</td>
+        <td class="voucher"></td>
+    </tr>
+</table>
+
+

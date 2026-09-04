@@ -1,0 +1,156 @@
+﻿
+
+
+<input type="hidden" id="hfRawMaterialId" />
+<input type="hidden" id="hfPurchaseId" />
+<div class="modal fade" id="addPurchasespopup" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Invoice</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-edit"></i>
+                            Invoice Header
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">date</label>
+                                <input type="date" class="form-control" id="txtInvoceDate" placeholder="Date" maxlength="100">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="exampleInputEmail1">Invoice No/Ref No</label>
+                                <input type="text" disabled class="form-control" id="txtInvoceNo" placeholder="Invoice No/Ref No" maxlength="100">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Vendor<span style="color:red">*</span></label>
+
+                                    <select class="form-control select2" id="ddlVendor" style="width: 100%;">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Payment Mode<span style="color:red">*</span></label>
+                                    <select class="form-control select2" id="ddlPaymentMode" style="width: 100%;">
+                                        <option value="0">Select</option>
+                                        <option value="1">Cash</option>
+                                        <option value="2">Credit</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" checked="checked" id="ChkIsInvoiceActive">
+                            <label class="form-check-label" for="exampleCheck1">Active</label>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-edit"></i>
+                            Add Material Detail
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label for="exampleInputEmail1">Material</label>
+                                <input type="text" class="form-control" id="txtMaterial" placeholder="Material" maxlength="100">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="exampleInputEmail1">UOM</label>
+                                <select class="form-control select2" id="ddlUOM" style="width: 100%;">
+                                </select>
+                            </div>
+                            <div class="col-lg-2">
+                                <label>Size<span style="color:red">*</span></label>
+
+                                <input type="number" class="form-control" id="txtSize" maxlength="10">
+                            </div>
+                            <div class="col-lg-2">
+                                <label>Qty<span style="color:red">*</span></label>
+                                <input type="number" class="form-control" id="txtQty" maxlength="10">
+                            </div>
+                            <div class="col-lg-2">
+                                <label>Rate<span style="color:red">*</span></label>
+                                <input type="number" class="form-control" id="txtRate" maxlength="10">
+                            </div>
+                            <div class="col-md-2">
+                                <br />
+                                <span id="bttnAddRawMaterial" class="btn btn-success col fileinput-button dz-clickable">
+                                    <i class="fas fa-plus"></i>
+                                    <span>Add</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+
+                            <table class="table table-sm" id="tblPurRawMaterial">
+                                <thead>
+                                    <tr>
+                                        <th>Material</th>
+                                        <th>UOM</th>
+                                        <th>Size</th>
+                                        <th>Qty</th>
+                                        <th>Rate</th>
+                                        <th>Amount</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <!-- /.card -->
+                </div>
+
+
+
+            </div>
+
+            <div class="card-footer">
+                <div class="text-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveInvoice" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+

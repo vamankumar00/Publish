@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+}
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/Product.js?dt=@(DateTime.Now.Ticks)"></script>
+
+@*<script src="~/CustomJquery/GenericAjax.min.js"></script>
+    <script src="~/CustomJquery/DefaultClientId.min.js"></script>
+    <script src="~/CustomJquery/Product.min.js"></script>*@
+
+<link href="~/css/select2.min.css" rel="stylesheet" />
+<script src="~/js/select2.min.js"></script>
+
+@*<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>*@
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li id="tabCatagory" role="presentation" class="active"><a href="#Catagory" aria-controls="Catagory" role="tab" data-toggle="tab"><i class="fa fa-th-large"></i> Catagory</a></li>
+        <li id="tabSubCatagory" role="presentation"><a href="#SubCatagory" aria-controls="SubCatagory" role="tab" data-toggle="tab"><i class="fa fa-list-alt"></i> Sub Catagory</a></li>
+        <li id="tabProduct" role="presentation"><a href="#Product" aria-controls="Product" role="tab" data-toggle="tab"><i class="fa fa-shopping-cart"></i> Product</a></li>
+        <li id="tabProductDiscount" role="presentation"><a href="#ProductDiscount" aria-controls="ProductDiscount" role="tab" data-toggle="tab"><i class="fa fa-tag"></i> Product Discount</a></li>
+        <li id="tabAddons" role="presentation"><a href="#Addons" aria-controls="Addons" role="tab" data-toggle="tab"><i class="fa fa-puzzle-piece"></i> Addons</a></li>
+        <li id="tabOptions1" role="presentation"><a href="#Option" aria-controls="Option" role="tab" data-toggle="tab"><i class="fa fa-gear"></i> Options1</a></li>
+        <li id="tabOptions2" role="presentation"><a href="#Options2" aria-controls="Option" role="tab" data-toggle="tab"><i class="fa fa-gear"></i> Options2</a></li>
+        <li id="tabDeal" role="presentation"><a href="#Deal" aria-controls="Deal" role="tab" data-toggle="tab"><i class="fa fa-gear"></i> Deal</a></li>
+        @*<li role="presentation"><a href="#ItemVariation" aria-controls="Item Variation" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i> Item Variation</a></li>
+            <li role="presentation"><a href="#RateItem" aria-controls="RateItem" role="tab" data-toggle="tab"><i class="fa fa-money"></i> Rate Item</a></li>*@
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="Catagory">
+            @Html.Partial("_Category")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="SubCatagory">
+            @Html.Partial("_SubCategory")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="ItemVariation">
+            @Html.Partial("_ItemVariation")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="RateItem">
+            @Html.Partial("_RateItem")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Product">
+            @Html.Partial("_Product")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="ProductDiscount">
+            @Html.Partial("_ProductDiscount")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Addons">
+            @Html.Partial("_Addons")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Option">
+            @Html.Partial("_Options")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Options2">
+            @Html.Partial("_Options2")
+        </div>
+        <div role="tabpanel" class="tab-pane" id="Deal">
+            @Html.Partial("_Deal")
+        </div>
+    </div>
+    <div class="alert alert-success" id="Alert" hidden role="alert">
+
+    </div>
+    @*<div class="alert alert-danger" role="alert">Oh snap! Change a few things up and try submitting again.</div>*@
+
+</div>

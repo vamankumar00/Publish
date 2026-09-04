@@ -1,0 +1,44 @@
+
+@{
+    ViewBag.Title = "BankDetails";
+}
+
+<h2>Bank Details</h2>
+
+<script src="~/CustomJQuery/BankDetails.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Bank Details</h1>
+        <div class="card-tools">
+            <span id="bttnAddBankDetails" class="btn btn-success col fileinput-button dz-clickable">
+                <i class="fas fa-plus"></i>
+                <span>Add Bank Details</span>
+            </span>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+
+        <table class="table table-sm" id="tblBankDetails">
+            <thead>
+                <tr>
+                    <th>BankBin</th>
+                    <th>BankName</th>
+                    <th>Person Count</th>
+                    <th>Card Type</th>
+                    <th>Card Product</th>
+                    <th>Visit</th>
+                    <th>Status</th>
+                    <th>CreatedDate</th>
+                    <th>CreatedBy</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_BankDetails")
+@Html.Partial("_ConfirmationPopup")
+

@@ -1,0 +1,45 @@
+
+@{
+    ViewBag.Title = "Vendor";
+}
+
+<script src="~/CustomJQuery/Vendor.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Vendor</h3>
+        <div class="card-tools">
+            <span id="bttnAddVendor" class="btn btn-success col fileinput-button dz-clickable">
+                <i class="fas fa-plus"></i>
+                <span>Add Vendor</span>
+            </span>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+
+        <table class="table table-sm" id="tblVendor">
+            <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone#</th>
+                    <th>Phone#</th>
+                    <th>Website</th>
+                    <th>Address1</th>
+                    <th>Address2</th>
+                    <th>Contact Person1</th>
+                    <th>Contact Person2</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Created By</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_Vendor")
+@Html.Partial("_ConfirmationPopup")

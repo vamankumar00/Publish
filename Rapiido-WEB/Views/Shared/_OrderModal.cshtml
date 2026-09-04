@@ -1,0 +1,42 @@
+﻿<div class="modal fade" id="ViewOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title" id="exampleModalLongTitle">
+                    Order
+                    <span class="ordernoOM pull-right"></span><label class="pull-right" for="ordernoOM">Order No:</label>
+                </h3>                
+            </div>
+            <div class="modal-body">
+              
+                <div class="tbl-container tbl-product">
+                    <!-- Table -->
+                    <table class="table" id="tblOrderDetails">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Item</th>
+                                <th>Description</th>
+                                <th>Option</th>
+                                <th>Variation</th>
+                                <th>Notes</th>
+                                <th>Qty</th>
+                                <th>Rate</th>
+                                <th>value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="SubmitOrder" class="btn btn-primary">Save changes</button>
+            </div>*@
+        </div>
+    </div>
+</div>

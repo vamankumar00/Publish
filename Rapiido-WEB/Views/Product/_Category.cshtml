@@ -1,0 +1,167 @@
+﻿
+    <!--start 1 tab-->
+    <div class="mid-container-wrapper">
+        <div class="container-fluid no-pad">
+            <div class="row no-pad">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Category Information</div>
+                        <div class="panel-body prd-tbl">
+                            <form>
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group img-show-btn">
+                                            @*<label>Upload Image</label>*@
+                                            <img id='img-upload1' />
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-primary btn-file">
+                                                        <i class="fa fa-folder-open-o" aria-hidden="true"></i> <input type="file" id="UploadCategory">
+                                                    </span>
+                                                </span>
+                                                <input type="text" class="form-control" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="hidden" id="HDFCategoryId" />
+                                                    <label for="exampleInputEmail1">Category Description</label>
+                                                    <input type='text' class="form-control" id='Categorydesc' />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Short Description</label>
+                                                    <input type="text" class="form-control" id="CategoryShortDesc" placeholder="Short Desc">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Sort Order</label>
+                                                    <input type='text' class="form-control" id='SortOrderCategory' />
+                                                    <input class="form-check-input" type="checkbox" checked value="" id="chkIsActiveCategory" required>
+                                                    <label class="form-check-label" for="invalidCheck2">
+                                                        Is Active
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <button type="button" id="SubmitCategory" class="btn btn-primary">Submit</button>
+                        
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Detail</div>
+                        <div class="panel-body prd-tbl">
+                            <div class="tbl-container tbl-product">
+                                <!-- Table -->
+                                <table class="table" id="Category_table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Short Desc</th>
+                                            <th>Sort Order</th>
+                                            @*<th class="text-right" scope="col">Action</th>*@
+                                            <th style="width:20%" scope="col" class="text-right">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end 1 tab-->
+    <style>
+        .img-show-btn {
+            /*text-align: center;*/
+        }
+
+            .img-show-btn .btn-file {
+                position: relative;
+                overflow: hidden;
+            }
+
+                .img-show-btn .btn-file input[type=file] {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    min-width: 100%;
+                    min-height: 100%;
+                    font-size: 100px;
+                    text-align: right;
+                    filter: alpha(opacity=0);
+                    opacity: 0;
+                    outline: none;
+                    background: white;
+                    cursor: inherit;
+                    display: block;
+                }
+
+            .img-show-btn #img-upload1 {
+                width: 100%;
+                max-width: 181px;
+                max-height: 165px;
+                /*min-height: 165px;*/
+            }
+
+            .img-show-btn .input-group .form-control {
+                width: 78%;
+            }
+    </style>
+    <script>
+    $(document).ready(function () {
+        $(document).on('change', '.btn-file :file', function () {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function (event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload1').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#UploadCategory").change(function () {
+            readURL(this);
+        });
+    });
+    </script>

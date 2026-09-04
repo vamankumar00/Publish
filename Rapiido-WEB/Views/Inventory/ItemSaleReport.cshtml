@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "ItemSaleReport";
+}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/ItemSaleReport.js?dt=@(DateTime.Now.Ticks)"></script>
+
+
+<style>
+    tr.highlighted td {
+        background: #fdfd96;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    .blink {
+        animation: blinker 2s linear infinite;
+    }
+
+    @@keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row no-pad">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Item Detail
+                        <span class="pull-right">
+                            <button onclick="printTable()">Print Table</button>
+                        </span>
+                    </div>
+                    <div class="panel-body dt-height">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">From Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="FromDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">To Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="ToDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Shift :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop">
+                                                    </i>
+                                                </div>
+                                                <select name="ddlShiftId" id="ddlShiftId" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option value="1">Shift A</option>
+                                                    <option value="2">Shift B</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-sm-2" style="display: none">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Payment By</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-desktop">
+                                                    </i>
+                                                </div>
+                                                <select name="" id="ddlPaymentBy_ISR" class="form-control">
+                                                    <option value="CARD">Card</option>
+                                                    <option selected value="CASH">Cash</option>
+                                                    <option value='CARD/CASH'>CARD + CASH</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-2" style="display: none">
+                                        <!-- Form code begins -->
+                                        <form method="post">
+                                            <label for="">Flight No:</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-hourglass-2">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="FlightNo" name="FlightNo" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-sm-2">
+                                        <label for=""></label>
+                                        <div class="input-group">
+                                            <button type="button" id="GenerateItemReport" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tbl-container tbl-product">
+                            <!-- Table -->
+                            @*<input type="hidden" id="HFFlightDetailsMasterId" />*@
+                            <table class="table" id="ItemDetails_table" style="width:100%">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Orders</th>
+                                        <th>Sold Quantity</th>
+                                        <th>Amount</th>
+                                        <th>Discount%</th>
+                                        <th>Net Amount</th>
+                                        <th>Shift Date</th>
+                                        <th>Shift Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+

@@ -1,0 +1,35 @@
+
+@{
+    ViewBag.Title = "AssigneTable";
+}
+
+
+<script src="~/CustomJQuery/AssigneTable.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">AssignTable</h1>
+        <div class="card-tools">
+            <span id="bttnAddAssignTable" class="btn btn-success col fileinput-button dz-clickable">
+                <i class="fas fa-plus"></i>
+                <span>Assign Table</span>
+            </span>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+
+        <table class="table table-sm" id="tblAssignTableList">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Table</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_AssigneTable")
+@Html.Partial("_ConfirmationPopup")

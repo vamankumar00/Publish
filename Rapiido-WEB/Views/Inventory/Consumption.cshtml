@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "ConsumptionDetail";
+}
+
+<style>
+    .hideRow {
+        display: none
+    }
+</style>
+<script>
+    $(function () {
+
+    });
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/ConsumptionReport.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="mid-container-wrapper">
+    <div class="container-fluid no-pad">
+        <div class="row no-pad">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Consumption Detail</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        Form code begins
+                                        <form method="post">
+                                            <label for="">From Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="OrderDetailfromDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        Form code begins
+                                        <form method="post">
+                                            <label for="">To Date :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar">
+                                                    </i>
+                                                </div>
+                                                <input class="form-control" id="OrderDetailtoDate" name="date" placeholder="YYYY-MM-DD" type="text">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for=""></label>
+                                        <div class="input-group">
+                                            <button type="button" id="GenerateOrderReport" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                            </div>
+                        </div>
+                        <div class="tbl-container tbl-product">
+                            <!-- Table -->
+
+                            <table class="table" id="OrderMaster_table" style="width:100%">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th></th>
+                                        <th>Item Description</th>
+                                        <th>Total Quantity</th>
+                                        <th>Material Description</th>
+                                        <th>Recipe Quantity</th>
+                                        <th>Consumption</th>
+                                        <th>UOM</th>
+                                        <th>Created Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //var date_input = $('input[name="date"]'); //our date input has the name "date"
+        //var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        //date_input.datepicker({
+        //    format: 'yyyy-mm-dd',
+        //    container: container,
+        //    todayHighlight: true,
+        //    autoclose: true,
+        //})
+    })
+</script>

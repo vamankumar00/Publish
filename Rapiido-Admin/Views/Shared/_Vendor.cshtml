@@ -1,0 +1,114 @@
+﻿
+
+<input type="hidden" id="hfVendorId" />
+<div class="modal fade" id="addVendor_popup" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Vendor</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Name<span style="color:red">*</span></label>
+                        <input type="email" class="form-control alpha" autocomplete="off" id="txtName" placeholder="Name" maxlength="100">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" autocomplete="off" id="txtEmail" placeholder="Email"  maxlength="500">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Country<span style="color:red">*</span></label>
+
+                            <select class="form-control select2" id="ddlcountry" style="width: 100%;">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>City<span style="color:red">*</span></label>
+                            <select class="form-control select2" id="ddlcity" style="width: 100%;">
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Phone 1<span style="color:red">*</span></label>
+                        <input type="text" class="form-control numeric" autocomplete="off" id="txtPhone1" placeholder="Phone 1" maxlength="20">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Phone 2</label>
+                        <input type="text" class="form-control numeric" autocomplete="off" id="txtPhone2" placeholder="Phone 2"  maxlength="20">
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Contact Person 1</label>
+                        <input type="text" class="form-control alpha" autocomplete="off" id="txtContact1" placeholder="Contact Person 1"  maxlength="50">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Contact Person 2</label>
+                        <input type="text" class="form-control alpha" autocomplete="off" id="txtContact2" placeholder="Contact Person 2"  maxlength="50">
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <label for="exampleInputEmail1">Address 1</label>
+                        <textarea id="txtAddress1" class="md-textarea form-control" rows="3"></textarea>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <label for="exampleInputEmail1">Address 2</label>
+                        <textarea id="txtAddress2" class="md-textarea form-control" rows="3"></textarea>
+                    </div>
+
+                </div>
+                <div class="row">
+                  
+                    <div class="col-md-12">
+                        <label for="exampleInputEmail1">WebSite</label>
+                        <input type="text" class="form-control" autocomplete="off" id="txtWebSite" placeholder="WebSite"  maxlength="100">
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" checked="checked" id="ChkIsVendorActive">
+                    <label class="form-check-label" for="exampleCheck1">Active</label>
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+                <div class="text-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveVendor" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+

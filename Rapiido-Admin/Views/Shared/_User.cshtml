@@ -1,0 +1,70 @@
+﻿
+
+<input type="hidden" id="hfUserId" />
+<div class="modal fade" id="addUserpopup" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">User</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <label for="txtName">Name<span style="color:red">*</span></label>
+                        <input type="text" class="form-control" autocomplete="off" id="txtName" placeholder="Name" maxlength="100">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <label for="txtUserName">User Name<span style="color:red">*</span></label>
+                        <input type="text" class="form-control" autocomplete="off" id="txtUserName" placeholder="User Name" maxlength="20">
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <label for="txtPassword">Password<span style="color:red">*</span></label>
+                        <input type="password" class="form-control" autocomplete="off" id="txtUserPassword" placeholder="Password" maxlength="20">
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <label for="exampleInputEmail1">Phone<span style ="color:red">*</span></label>
+                        <input type="text" class="form-control numeric" autocomplete="off" id="txtPhone" placeholder="Phone No" maxlength="20">
+
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <label>Back Office</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="IsBackOffice" id="radioBackOfficeYes" value="true">
+                            <label class="form-check-label" for="radioBackOfficeYes">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="IsBackOffice" id="radioBackOfficeNo" value="false" checked>
+                            <label class="form-check-label" for="radioBackOfficeNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-check mt-3">
+                    <input type="checkbox" class="form-check-input" checked="checked" id="ChkIsUserActive">
+                    <label class="form-check-label" for="ChkIsUserActive">Active</label>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="text-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveUser" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

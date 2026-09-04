@@ -1,0 +1,66 @@
+﻿
+
+
+
+
+<input type="hidden" id="hfAssignedId" />
+<div class="modal fade" id="addTableAssigneWaiterpopup" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Assigned Tables</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label>Waiter</label>
+                            <select class="form-control select2" id="ddlWaiter" style="width: 100%;">
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="card-body table-responsive p-0" style="height: 300px;">
+                    <div class="col-12">
+                        <table class="table table-head-fixed text-nowrap" id="tblTablesList">
+                            <thead>
+
+                                <tr>
+
+                                    <th><input type="checkbox" id="chkAllTable" /></th>
+                                    <th>Tables</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+            @*/.card-body*@
+
+            <div class="card-footer">
+                <div class="text-right">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnSaveAssignTable" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+

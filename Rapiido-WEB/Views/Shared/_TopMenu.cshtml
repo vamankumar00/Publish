@@ -1,0 +1,305 @@
+﻿<div>
+    <h1 class="text-center" id="txtRestaurantName"></h1>
+</div>
+<nav class="navbar navbar-default">
+    <a class="navbar-brand" href="#">
+        <img src="~/images/logo_splash.png" />
+    </a>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="menu">
+            <ul class="nav navbar-nav" id="ulnav">
+                @*<li class=""><a href="~/Home/Index"><i class="glyphicon glyphicon-home"></i> Dashboard  <span class="sr-only">(current)</span></a></li>*@
+                <!--<li class=""><a href="~/Dinein/Dinein"><i class="glyphicon glyphicon-home"></i> Dashboard  <span class="sr-only">(current)</span></a></li>
+                <li><a href="../Order/OrderList"><i class="fa fa-address-card"></i> Order Detail</a></li>-->
+                @*<li><a href=""><i class="glyphicon glyphicon-resize-small"></i> Call History</a></li>*@
+                @*<li><a href="#"><i class="glyphicon glyphicon-education"></i> Jobs</a></li>*@
+                @*<li><a href="#"><i class="fa fa-user-circle-o"></i> Account</a></li>*@
+                <!--<li><a href="~/Product/Product"><i class="fa fa-server"></i> Product</a></li>
+                
+                <li><a href="~/Inventory/Recipe"><i class="fa fa-server"></i> Recipe</a></li>
+                <li><a href="~/Inventory/Consumption"><i class="fa fa-server"></i>Consumption Report</a></li>-->
+                @*<li><a href="~/Inventory/Inventory"><i class="fa fa-server"></i> Inventory</a></li>*@
+                @*<li><a href="#"><i class="fa fa-car"></i> Vehicle</a></li>*@
+                @*<li><a href="../Order/Order"><i class="fa fa-plus-square"></i> New Job</a></li>*@
+                @*<li><a href="../Driver/Driver"><i class="fa fa-motorcycle"></i> Driver</a></li>*@
+
+                <!--<li><a href="~/Inventory/FinancialReport"><i class="fa fa-server"></i>Financial Report</a></li>-->
+                <!--<li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+        </ul>
+    </li>-->
+            </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" id="lidd">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <label> Reports </label>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+
+                    <li><a href="../Inventory/FinancialReport"><i class="fa fa-server"></i> Financial Report</a></li>
+                    <li><a href="../Inventory/ItemSaleReport"><i class="fa fa-server"></i> Item Sale Report</a></li>
+                    <li><a href="../Inventory/Reports"><i class="fa fa-server"></i> Other Reports</a></li>
+
+                </ul>
+            </li>
+
+            <li><a href="#" onclick="closeshift()"><i class="fa fa-server"></i> Shift Close</a></li>
+
+            @*<li class="dropdown">
+            <a class="dropdown-toggle" font-weight: bold;" id="Notification" data-toggle="dropdown">
+                <strong>Notification (<span style="color: red" id="countNotify">0</span>)</strong> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" id="myNotifyList"></ul>
+        </li>*@
+            <li class="dropdown notification-wrapper">
+                <a class="dropdown-toggle notification-link" id="Notification" data-toggle="dropdown">
+                    <strong>Notification (<span  style="color: red" id="countNotify">0</span>)</strong>
+                    <span class="notification-dot"  style="color: red" id="notificationDot"></span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" id="myNotifyList"></ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o"></i><label class="UserName"> Admin </label><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fa fa-sliders"></i> Setting</a></li>
+                    <li><a href="#"><i class="fa fa-user-o"></i> Profile</a></li>
+                    <li><a href="https://adminapp.rapiidoc.com/Home/Index"><i class="fa fa-user-o"></i> Admin Portal</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li id="lilogout"><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+    <!-- /.container-fluid -->
+</nav>
+<style>
+    .blink {
+        animation: blinker 2s linear infinite;
+    }
+
+    @@keyframes blinker {
+        50% {
+            opacity: 0;
+        }
+    }
+    /* Make notification link bold and red */
+.notification-link {
+    font-weight: bold;
+    position: relative;
+}
+
+/* Notification dot */
+.notification-dot {
+    position: absolute;
+    top: 5px;
+    right: 19px;
+    height: 14px;
+    width: 14px;
+    background-color: red;
+    border-radius: 50%;
+    display: none;
+    animation: blinkDot 2s infinite;
+}
+
+/* Blink animation */
+@@keyframes blinkDot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+</style>
+<script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+<script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+@*<script src="~/CustomJquery/OrderList.js?dt=@(DateTime.Now.Ticks)"></script>*@
+
+<script>
+    $(document).ready(function () {
+        $("#txtRestaurantName").text($("#SessionRestaurantName").val());
+        $(".UserName").text($("#SessionUserName").val());
+        $('#lidd').hide();
+        var isManager = window.localStorage.getItem("ISBackOffice");
+        var clientId = DefaultClientId.toUpperCase();
+
+        var lst = "";
+        $("#ulnav").html("");
+
+        lst = "";
+        if (isManager != 1) {
+            lst += "<li class=''><a href='../Dinein/Dinein'><i class='glyphicon glyphicon-home'></i> Dashboard  <span class='sr-only'>(current)</span></a></li>";
+            lst += "<li><a href='../Order/OrderList'><i class='fa fa-address-card'></i> Order Detail</a></li>";
+            lst += "<li><a href='../Product/Product'><i class='fa fa-server'></i> Product</a></li>";
+        }
+
+        if (isManager == 1 && clientId == 'KF_987')
+        {
+            lst += "<li><a href='../Inventory/Recipe'><i class='fa fa-server'></i> Recipe</a></li>";
+            lst += "<li><a href='../Inventory/Consumption'><i class='fa fa-server'></i> Consumption Report</a></li>";
+        }
+
+        //South City
+        if (clientId == 'SC_101') {
+            lst += "<li><a href='../Inventory/FinancialReport'><i class='fa fa-server'></i> Financial Report</a></li> ";
+        }
+
+        //Sky Majestic
+        if (isManager == 1 && (clientId == 'MJ_100_I' || clientId == 'SM_100' || clientId == 'MJ_100' || clientId == 'SM_100_I' || clientId == 'MJ_100_I' || clientId == 'CM_100_I')) {
+            lst += "<li><a href='../Home/Payment'><i class='fa fa-server'></i> Payment</a></li> ";
+            lst += "<li><a href='../Inventory/FlightDetails'><i class='fa fa-server'></i> Flight Details Report</a></li> ";
+            $('#lidd').show();
+        }
+
+        //Cafe Majestic
+        //if (clientId == 'CM_100_I') {
+        //    lst += "<li><a href='../Inventory/FinancialReport'><i class='fa fa-server'></i> Financial Report</a></li> ";
+        //    lst += "<li><a href='../Inventory/ItemSaleReport'><i class='fa fa-server'></i> Item Sale Report</a></li> ";
+        //    lst += "<li><a href='../Inventory/Reports'><i class='fa fa-server'></i> Other Report</a></li> ";
+        //}
+
+         $('#ulnav').append(lst);
+
+
+        $(".menu li a").each(function () {
+            var isActive = this.pathname === location.pathname;
+            $(this).parent().toggleClass('active', isActive);
+        });
+        $('#lilogout').click(function () {
+               
+            var request = {};
+            request.DefaultClientId = DefaultClientId;
+            request.UserId = window.localStorage.getItem("UserId"); //sessionStorage.UserId;
+            Common.Ajax('POST', url + 'LogoutWeb', JSON.stringify(request), 'json', LogoutHandler);
+        });
+    });
+
+    function LogoutHandler(response) {
+
+        Common.Ajax('POST', '../Home/Logout', '', 'json', LogoutWebHandler);
+
+    }
+    function LogoutWebHandler(response) {
+
+        if (response == "success") {
+            window.localStorage.clear();
+            window.location = "../Login/Login";
+        }
+    }
+    function closeshift() {
+        $('#ViewDenomination').modal('show');
+
+    }
+    //$(".menu li a").on('click', function (e) {
+    //    $(".menu .active").removeClass('active');
+    //    $(this).parent().addClass('active');
+    //    e.preventDefault();
+    //});
+    setInterval(function () {
+        //UpdateNotifications();
+
+        var request = {};
+        request.DefaultClientId = DefaultClientId;
+        Common.Ajax('POST', url + 'GetNotifications', JSON.stringify(request), 'json', UpdateNotifications);
+    }, 15000);
+
+    function UpdateNotifications(response) {
+        if (response != null) {
+
+            var j = ""; var p = 0; var Q = "";
+            $.each(response, function (k, v) {
+                p++;
+                if (p < 6) {
+                    j += "<li><a><strong>  " + v.Notification + " </strong> <br /> <div style='text-align:right;font-size:smaller;font-style:italic'> <i style='font-size:smaller'> updated : " + v.LastUpdated + "</i></div></a></li>";
+                }
+                Q += "<strong>  " + v.Notification + " </strong><br /><div class='pull-right'><i class='fa fa-check btn btn-success btnnotaccept ' onclick='showDetails(this)' data-type='Approved' data-orderid=" + v.OrderId + " data-orderno=" + v.OrderNo + " data-itemid=" + v.ItemId + " data-itemqty=" + v.ItemQty + " data-itemdesc= '" + v.ItemDesc + "' data-orderdetailselfid=" + v.OrderDetailSelfId + " ></i><i class='fa fa-trash btn btn-danger btnnotreject ' onclick='showDetails(this)' data-type = 'Rejected' data-orderid=" + v.OrderId + " data-orderno=" + v.OrderNo + " data-itemid=" + v.ItemId + " data-itemqty=" + v.ItemQty + " data-itemdesc= '" + v.ItemDesc + "' data-orderdetailselfid=" + v.OrderDetailSelfId + "></i></div> <br /> <div style='text-align:right;font-size:smaller;font-style:italic'> <i style='font-size:smaller'> updated : " + v.LastUpdated + "</i></div>";
+            });
+            $('#myNotifyList').html("");
+            j += "<li><a data-toggle='modal' data-target='#NotificationListModal'><div style='text-align:center'><strong> Show more </strong></div></li>";
+            $('#myNotifyList').append(j);
+            $('#countNotify').html("<span>" + p + "</span>");
+            $('#myAllNotifications').html("");
+            $('#myAllNotifications').append(Q);
+            //if (p > 0) {
+            //    $("#Notification").addClass("blink");
+            //}
+            //else {
+            //    $("#Notification").removeClass("blink");
+            //}
+            if (p > 0) {
+                $("#Notification").addClass("blink");
+                $("#notificationDot").show();
+            } else {
+                $("#Notification").removeClass("blink");
+                $("#notificationDot").hide();
+            }
+
+
+        }
+    }
+    function showDetails(req) {
+        $(this).prop('disabled', true);
+        let requestType = req.getAttribute("data-type");
+        var reason = "";
+        debugger;
+        var request = {};
+        request.DefaultClientId = DefaultClientId;
+        request.ItemStatus = requestType;
+        request.OrderId = req.getAttribute("data-orderid");
+        request.OrderNo = req.getAttribute("data-orderno");
+        request.ItemId = req.getAttribute("data-itemid");
+        request.ItemQty = req.getAttribute("data-itemqty");
+        request.ItemDesc = req.getAttribute("data-itemdesc");
+        request.OrderDetailSelfId = req.getAttribute("data-orderdetailselfid");
+        request.UpdatedBy = window.localStorage.getItem("UserId"); //sessionStorage.UserId;
+        request.IsOffline = 1;
+
+        if (requestType == "Rejected") {
+            $('#customAlertModal').modal('show');
+
+            $('#selectOption').click(function () {
+                var selectedOption = $('#ddlRejectReason').val();
+
+                reason = selectedOption;
+                request.RejectReason = reason;
+                Common.Ajax('POST', url + 'UpdateItemDeleteRequest', JSON.stringify(request), 'json', UpdateItemDeleteRequestHandler);
+
+                $('#customAlertModal').modal('hide');
+                return true;
+            });
+        }
+        else {
+            request.RejectReason = reason;
+            Common.Ajax('POST', url + 'UpdateItemDeleteRequest', JSON.stringify(request), 'json', UpdateItemDeleteRequestHandler);
+        }
+    }
+    function UpdateItemDeleteRequestHandler(response) {
+        GetOrderListReport();
+        if (response == "success") {
+            GetOrderListReport();
+            return true;
+        }
+    }
+
+</script>
+@Html.Partial("_ShiftDenomination")
+@Html.Partial("_NotificationModal")

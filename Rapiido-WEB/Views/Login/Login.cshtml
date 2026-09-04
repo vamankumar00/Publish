@@ -1,0 +1,88 @@
+﻿@model DeliverySystem.Models.LoginRequest
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>.::Rapiido::.</title>
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">-->
+
+    <link rel="stylesheet" href="~/fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="~/Login/css/owl.carousel.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Login/css/bootstrap.min.css" />
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/Login/css/style.css" />
+    <script src="~/Login/js/jquery-3.3.1.min.js"></script>
+    <script src="~/CustomJquery/GenericAjax.js?dt=@(DateTime.Now.Ticks)"></script>
+    <script src="~/CustomJquery/DefaultClientId.js?dt=@(DateTime.Now.Ticks)"></script>
+    <script src="~/CustomJquery/Login.js?dt=@(DateTime.Now.Ticks)"></script>
+
+</head>
+
+<body>
+
+    <!-- Loader HTML -->
+    <div id="loader" style="display:none;">
+        <div class="spinner"></div>
+        <p class="loader-text">Please wait</p>
+    </div>
+
+    <div class="d-lg-flex half">
+        <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+        <div class="contents order-2 order-md-1">
+
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7">
+                        <h3>Login to <strong>Rapiido App</strong></h3>
+                        @*<p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>*@
+                        <form action="#" method="post">
+                            <div class="form-group first">
+                                <label for="defaultclientid">Restaurant ID</label>
+                                <input type="text" class="form-control" autocomplete="off" placeholder="Restaurant Id" id="defaultclientid">
+                            </div>
+                            <div class="form-group first">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" autocomplete="off" value="" placeholder="Enter Username" id="username">
+                            </div>
+                            <div class="form-group last mb-3">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" autocomplete="off" value="" placeholder="Enter Password" id="password" />
+                            </div>
+
+                            @*<div class="d-flex mb-5 align-items-center">
+                                    <label class="control control--checkbox mb-0">
+                                        <span class="caption">Remember me</span>
+                                        <input type="checkbox" checked="checked" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                                </div>*@
+
+                            <input type="button" value="Log In" id="bttnLogin" class="btn btn-block btn-primary">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="~/Login/js/popper.min.js"></script>
+    <script src="~/Login/js/bootstrap.min.js"></script>
+    <script src="~/Login/js/main.js"></script>
+</body>
+</html>

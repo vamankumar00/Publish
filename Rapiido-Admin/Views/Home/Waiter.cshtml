@@ -1,0 +1,42 @@
+
+@{
+    ViewBag.Title = "Waiter";
+}
+
+
+<script src="~/CustomJQuery/Waiter.js?dt=@(DateTime.Now.Ticks)"></script>
+<div class="card">
+    <div class="card-header">
+        <h1 class="card-title">Waiter</h1>
+        <div class="card-tools">
+            <span id="bttnAddWaiters" class="btn btn-success col fileinput-button dz-clickable">
+                <i class="fas fa-plus"></i>
+                <span>Add Waiter</span>
+            </span>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+
+        <table class="table table-sm" id="tblWaiterList">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>Password</th>
+                    <th>Number</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Login</th>
+                    <th>Login Date</th>
+                    <th>Logout Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@Html.Partial("_Waiter")
+@Html.Partial("_ConfirmationPopup")
