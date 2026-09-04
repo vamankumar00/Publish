@@ -1,4 +1,4 @@
-﻿var url;
+var url;
 $(document).ready(function () {
 /*var url = 'https://api.atechsolutions.co/Deliverapp/HOME/';*/
 
@@ -15,15 +15,21 @@ $(document).ready(function () {
     });
 
 
-    $.ajax({
-        url: '../data.txt',
-        async: false,   // asynchronous request? (synchronous requests are discouraged...)
-        cache: false,   // with this, you can force the browser to not make cache of the retrieved data
-        dataType: "text",  // jQuery will infer this, but you can set explicitly
-        success: function (data, textStatus, jqXHR) {
-            url = data;
-        }
-    });
+    var urls = ['../Data.txt', 'Data.txt', '/Data.txt', '../data.txt', '/data.txt', 'data.txt'];
+    for (var i = 0; i < urls.length; i++) {
+        $.ajax({
+            url: urls[i],
+            async: false,
+            cache: false,
+            dataType: "text",
+            success: function (data) {
+                if (data && data.trim()) {
+                    url = data.trim();
+                }
+            }
+        });
+        if (url) break;
+    }
     $('#bttnLogin').click(function () {
         $('#loader').show();
         Login(url + 'SignInWebApp');

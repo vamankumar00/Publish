@@ -1,16 +1,22 @@
-﻿var url;
+var url;
 $(document).ready(function () {
 
 
-    $.ajax({
-        url: '../data.txt',
-        async: false,   
-        cache: false,   
-        dataType: "text", 
-        success: function (data, textStatus, jqXHR) {
-            url = data;
-        }
-    });
+    var urls = ['../Data.txt', 'Data.txt', '/Data.txt', '../data.txt', '/data.txt', 'data.txt'];
+    for (var i = 0; i < urls.length; i++) {
+        $.ajax({
+            url: urls[i],
+            async: false,
+            cache: false,
+            dataType: "text",
+            success: function (data) {
+                if (data && data.trim()) {
+                    url = data.trim();
+                }
+            }
+        });
+        if (url) break;
+    }
     $('#bttnLogin').click(function () {
         Login(url + 'SignInWebApp');
         

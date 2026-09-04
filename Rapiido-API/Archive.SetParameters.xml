@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <setParameter name="IIS Web Application Name" value="Default Web Site/DeliverySystemAPI_deploy" />
-  <setParameter name="Connection-Web.config Connection String" value="1JFNnBvv13QKMVe1zBqMSAF90BtjhsfZ2jRKnp2g6O8i+AROnthFvuI5MF1I58YWnBeCPWd/5ukPZxJdhNkexj7CPjSZ1AHfnr3HdgCfQLfnz/BVdARkVTmqk+4KM4HP" />
-</parameters>

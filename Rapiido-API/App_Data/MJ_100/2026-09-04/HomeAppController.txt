@@ -28,3 +28,11 @@ Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId
 Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":6}
 ********** 9/4/2026 9:05:45 PM **********
 Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":3}
+********** 9/4/2026 10:57:21 PM **********
+Source: GetCategories_Table Info: "MJ_100"
+********** 9/4/2026 10:57:21 PM **********
+Source: GetAllTaxes Info: "MJ_100"
+********** 9/4/2026 10:57:21 PM **********
+Source: GetAllDiscounts Info: "MJ_100"
+********** 9/4/2026 10:57:22 PM **********
+Source: GetAllItemByCategory_Table Info: {"DefaultClientId":"MJ_100","CategoryId":1}
