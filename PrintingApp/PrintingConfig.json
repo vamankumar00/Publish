@@ -1,0 +1,15 @@
+{
+  "ShowRestaurantName": true,
+  "ShowRestaurantAddress": true,
+  "ShowRestaurantPhone": true,
+  "ShowOrderNo": true,
+  "ShowOrderDate": true,
+  "ShowCustomerName": true,
+  "ShowOrderType": true,
+  "ShowTableNo": true,
+  "ShowWaiterName": true,
+  "ShowDiscount": true,
+  "ShowTax": true,
+  "ShowSrbQrCode": true,
+  "ShowFooter": true
+}
